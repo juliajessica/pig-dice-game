@@ -29,7 +29,7 @@ function runningRollDice() {
 }
 
 function emptyRollArray() {
-  return rollArray = [0];
+ return rollArray = [0];
 }
 
 //User Logic
@@ -52,24 +52,27 @@ $(function(){
     var currentRollPlayer= rollArray[rollArray.length-1];
     console.log(rollArray);
     if (currentRollPlayer === 1) {
-      emptyRollArray();
-      $("#p1runningTotal").text(0);
-      //computer turn
       console.log(rollArray);
+      $("#p1runningTotal").text(0);
+      emptyRollArray();
+      //computer turn
       for (var i = 0; i < 2; i++) {
         runningRollDice();
+        console.log(rollArray);
         var currentRollComputer= rollArray[rollArray.length-1];
         if (currentRollComputer === 1) {
           console.log(rollArray);
           emptyRollArray();
+          console.log(rollArray);
           i=2;
           $("#p2runningTotal").text(0);
         } else {
+          console.log(rollArray);
           $("#p2runningTotal").text(rollArrayTotal(getSum));
         }
-        playerArray[1].totalScore(rollArrayTotal(getSum));
-        $("#p2scoreTotal").text(playerArray[1].score);
       }
+      playerArray[1].totalScore(rollArrayTotal(getSum));
+      $("#p2scoreTotal").text(playerArray[1].score);
 
       // runningRollDice();
       // var currentRollComputer= rollArray[rollArray.length-1];
@@ -96,6 +99,7 @@ $(function(){
     playerArray[0].totalScore(rollArrayTotal(getSum));
     $("#p1scoreTotal").text(playerArray[0].score);
     emptyRollArray();
+    console.log(rollArray);
     $("#p1runningTotal").text(0);
   });
 });
