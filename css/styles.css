@@ -1,0 +1,13 @@
+#player1-scorecard {
+  display: none;
+}
+
+#player2-scorecard {
+  display:none;
+}
+
+.col {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 10px;
+}
