@@ -11,3 +11,7 @@
   border-radius: 15px;
   margin: 10px;
 }
+
+#rollDisplay {
+ display: none; 
+}

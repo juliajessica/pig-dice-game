@@ -23,7 +23,7 @@ function rollArrayTotal(sum) {
   return rollArray.reduce(sum)
 }
 
-function runningRollDice(number) {
+function runningRollDice() {
   rollArray.push(rollDice(6))
   return rollArrayTotal(getSum);
 }
@@ -44,10 +44,13 @@ $(function(){
   });
 
   $("#roll-button").click(function(){
-    var p1CurrentRunningTotal = runningRollDice(6);
+    var p1CurrentRunningTotal = runningRollDice();
     $("#p1runningTotal").text(p1CurrentRunningTotal);
+    var currentRoll = rollArray[rollArray.length-1];
+    $("#rollDisplay p").text(currentRoll);
     // console.log(p1RollArray[p1RollArray.length-1]);
     $("#player1-scorecard").show();
+    $("#rollDisplay").show();
   });
 
   $("#hold-button").click(function(){
