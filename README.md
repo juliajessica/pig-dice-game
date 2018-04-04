@@ -11,7 +11,15 @@ _This webpage is designed to allow a user to play <a href="https://www.thespruce
 #### Specifications
 
 | Specification | Input | Output |
-| Program creates player object | --- | --- |
+| --- | --- | --- |
+| Program will generate a die roll | player: roll | random number: 1-6 |
+| Program will add roll to running total | player: rolls | running total: initial roll number |
+| Program will add second rolls to running total | player: rolls again | running total: initial roll number + new roll number |
+| Program will allow a hold between rolls and returns score total | player: hold | score total: running total |
+| Program will clear running total when player holds | player: hold | running total: 0 |
+| Program will clear running total if roll equals 1 | player: 1 | running total: 0, score total: unchanged |
+| Program will initialize other players turn when running total is cleared | other player: rolls | random number: 1-6 |
+| Program ends when either player score total is greater than or equal to 100 | score total: 100 | Winner! |
 
 ## Setup/Installation Requirements
 
