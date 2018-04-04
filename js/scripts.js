@@ -52,45 +52,28 @@ $(function(){
     var currentRollPlayer= rollArray[rollArray.length-1];
     console.log(rollArray);
     if (currentRollPlayer === 1) {
-      console.log(rollArray);
       $("#p1runningTotal").text(0);
       emptyRollArray();
       //computer turn
       for (var i = 0; i < 2; i++) {
         runningRollDice();
-        console.log(rollArray);
         var currentRollComputer= rollArray[rollArray.length-1];
+        console.log(rollArray);
         if (currentRollComputer === 1) {
-          console.log(rollArray);
           emptyRollArray();
-          console.log(rollArray);
           i=2;
           $("#p2runningTotal").text(0);
         } else {
-          console.log(rollArray);
           $("#p2runningTotal").text(rollArrayTotal(getSum));
         }
       }
       playerArray[1].totalScore(rollArrayTotal(getSum));
       $("#p2scoreTotal").text(playerArray[1].score);
-
-      // runningRollDice();
-      // var currentRollComputer= rollArray[rollArray.length-1];
-      // if (currentRollComputer === 1) {
-      //   emptyRollArray();
-      //   $("#p2runningTotal").text(0);
-      // } else {
-      //   $("#p2runningTotal").text(rollArrayTotal(getSum));
-      //   console.log("test!");
-      //   console.log(rollArray);
-      //   $("#p2scoreTotal").text(playerArray[1].totalScore(rollArrayTotal(getSum)));
-      //   emptyRollArray();
-      // }
+      emptyRollArray();
     } else {
       $("#p1runningTotal").text(p1CurrentRunningTotal);
     }
     $("#rollDisplay p").text(currentRollPlayer);
-    // console.log(p1RollArray[p1RollArray.length-1]);
     $("#player1-scorecard").show();
     $("#rollDisplay").show();
   });
@@ -99,18 +82,22 @@ $(function(){
     playerArray[0].totalScore(rollArrayTotal(getSum));
     $("#p1scoreTotal").text(playerArray[0].score);
     emptyRollArray();
-    console.log(rollArray);
     $("#p1runningTotal").text(0);
+    //computer turn
+    for (var i = 0; i < 2; i++) {
+      runningRollDice();
+      var currentRollComputer= rollArray[rollArray.length-1];
+      console.log(rollArray);
+      if (currentRollComputer === 1) {
+        emptyRollArray();
+        i=2;
+        $("#p2runningTotal").text(0);
+      } else {
+        $("#p2runningTotal").text(rollArrayTotal(getSum));
+      }
+    }
+    playerArray[1].totalScore(rollArrayTotal(getSum));
+    $("#p2scoreTotal").text(playerArray[1].score);
+    emptyRollArray();
   });
 });
-
-//
-// click
-// runningRollDice();
-// if (currentRoll === 1) {
-//   emptyRollArray();
-//   $("#p2runningTotal").text(0);
-// } else {
-//   $("#p2runningTotal").text(playerArray[1].totalScore(rollArrayTotal(getSum)));
-//   console.log(playerArray[1].score);
-// }
