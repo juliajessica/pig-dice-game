@@ -29,7 +29,7 @@ function runningRollDice() {
 }
 
 function emptyRollArray() {
-  return rollArray.length = 0
+  return rollArray = [0];
 }
 
 //User Logic
@@ -45,8 +45,14 @@ $(function(){
 
   $("#roll-button").click(function(){
     var p1CurrentRunningTotal = runningRollDice();
-    $("#p1runningTotal").text(p1CurrentRunningTotal);
     var currentRoll = rollArray[rollArray.length-1];
+    if (currentRoll === 1) {
+      emptyRollArray();
+      $("#p1runningTotal").text(0);
+      console.log(rollArray);
+    } else {
+      $("#p1runningTotal").text(p1CurrentRunningTotal);
+    }
     $("#rollDisplay p").text(currentRoll);
     // console.log(p1RollArray[p1RollArray.length-1]);
     $("#player1-scorecard").show();
