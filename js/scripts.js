@@ -32,6 +32,12 @@ function emptyRollArray() {
  return rollArray = [0];
 }
 
+function reset() {
+  for (var i = 0; i < playerArray.length; i++) {
+    playerArray[i].score = 0;
+  }
+}
+
 //User Logic
 $(function(){
   $("#player1-form").submit(function(event){
@@ -44,7 +50,7 @@ $(function(){
     $("#player1-scorecard").fadeIn();
     $("#player2-name").text("Bob");
     $("#player2-scorecard").fadeIn();
-    $("#p1-hide").hide();
+    $("#player1-submitcard").hide();
   });
 
   $("#roll-button").click(function(){
@@ -70,6 +76,10 @@ $(function(){
       playerArray[1].totalScore(rollArrayTotal(getSum));
       $("#p2scoreTotal").text(playerArray[1].score);
       emptyRollArray();
+      if (playerArray[1].score >= 100) {
+        alert("Sorry " + playerArray[0].userName + ", the winner is " + playerArray[1].userName + ". Better luck next time!");
+        $("#reset-btn").show();
+      }
     } else {
       $("#p1runningTotal").text(p1CurrentRunningTotal);
     }
@@ -83,6 +93,10 @@ $(function(){
     $("#p1scoreTotal").text(playerArray[0].score);
     emptyRollArray();
     $("#p1runningTotal").text(0);
+    if (playerArray[0].score >= 100) {
+      alert("congratulations " + playerArray[0].userName + ", you win!");
+      $("#reset-btn").show();
+    }
     //computer turn
     for (var i = 0; i < 2; i++) {
       runningRollDice();
@@ -99,5 +113,17 @@ $(function(){
     playerArray[1].totalScore(rollArrayTotal(getSum));
     $("#p2scoreTotal").text(playerArray[1].score);
     emptyRollArray();
+    if (playerArray[1].score >= 100) {
+      alert("Sorry " + playerArray[0].userName + ", the winner is " + playerArray[1].userName + ". Better luck next time!");
+      $("#reset-btn").show();
+    }
+  });
+
+  $("#reset-btn").click(function(e){
+    e.preventDefault();
+    reset();
+    console.log(playerArray[1].score);
+    $("#p1scoreTotal").text(playerArray[0].score);
+    $("#p2scoreTotal").text(playerArray[1].score);
   });
 });
